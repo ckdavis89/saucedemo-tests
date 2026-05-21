@@ -30,9 +30,9 @@ jobs:
 
       - name: Generate baseline snapshots if missing
         run: |
-          if [ -z "$(find tests -name '*.png' -path '*-snapshots*' 2>/dev/null | head -1)" ]; then
-            echo "No baseline snapshots found — generating..."
-            npx playwright test --update-snapshots || true
+          if [ -z "$(find tests -name '*-linux.png' -path '*-snapshots*' 2>/dev/null | head -1)" ]; then
+            echo "No Linux baseline snapshots found — generating..."
+            npx playwright test --update-snapshots=missing || true
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add tests/
